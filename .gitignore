@@ -37,3 +37,10 @@ backend/app/services/__pycache__/
 
 # Logs
 *.log
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/node_modules/.tmp/
+frontend/*.tsbuildinfo
