@@ -1,0 +1,103 @@
+{
+  "info": {
+    "name": "Incident Dashboard API",
+    "_postman_id": "c3f18b5b-8d53-4f2f-a7a2-incident-dashboard",
+    "description": "Postman collection for the Incident Dashboard FastAPI backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    },
+    {
+      "key": "incidentId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "List Incidents",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/incidents"
+      }
+    },
+    {
+      "name": "List Incidents With Filters",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/incidents?severity=critical&status=open&page=1&page_size=10&sort_by=date&sort_order=desc"
+      }
+    },
+    {
+      "name": "Search Incidents",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/incidents?search=database"
+      }
+    },
+    {
+      "name": "Get Incident By Id",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/incidents/{{incidentId}}"
+      }
+    },
+    {
+      "name": "Create Incident",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Database connection pool exhaustion\",\n  \"description\": \"Application requests started failing because the connection pool reached its maximum size during peak traffic.\",\n  \"severity\": \"critical\",\n  \"status\": \"open\",\n  \"date\": \"2026-05-06T10:30:00Z\"\n}"
+        },
+        "url": "{{baseUrl}}/api/v1/incidents"
+      }
+    },
+    {
+      "name": "Update Incident",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Database connection pool exhaustion\",\n  \"description\": \"Pool saturation was mitigated after increasing limits and restarting workers.\",\n  \"severity\": \"high\",\n  \"status\": \"resolved\",\n  \"date\": \"2026-05-06T10:30:00Z\"\n}"
+        },
+        "url": "{{baseUrl}}/api/v1/incidents/{{incidentId}}"
+      }
+    },
+    {
+      "name": "Delete Incident",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/v1/incidents/{{incidentId}}"
+      }
+    },
+    {
+      "name": "Get Stats",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/v1/stats"
+      }
+    }
+  ]
+}

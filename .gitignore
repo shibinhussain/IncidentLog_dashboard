@@ -1,0 +1,39 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+.env.example
+incident-dashboard-bonus-steps.md
+incident-dashboard-project-plan.md
+
+# Backend local env and build artifacts
+backend/.env
+backend/.venv/
+backend/__pycache__/
+backend/app/__pycache__/
+backend/app/api/__pycache__/
+backend/app/api/v1/__pycache__/
+backend/app/core/__pycache__/
+backend/app/models/__pycache__/
+backend/app/schemas/__pycache__/
+backend/app/services/__pycache__/
+
+# Logs
+*.log
