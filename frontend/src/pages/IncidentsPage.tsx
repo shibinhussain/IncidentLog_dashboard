@@ -1,5 +1,5 @@
 import type { ColumnDef } from '@tanstack/react-table';
-import { ArrowDown, ArrowUp, Pencil, Plus, ShieldAlert, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, Download, Pencil, Plus, ShieldAlert, Trash2 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Badge } from '../components/ui/Badge';
 import { Button } from '../components/ui/Button';
@@ -13,7 +13,7 @@ import { PageWrapper } from '../components/layout/PageWrapper';
 import { useIncidentFilters } from '../hooks/useIncidentFilters';
 import { useDeleteIncident, useIncidents } from '../hooks/useIncidents';
 import type { Incident, IncidentFilters } from '../types/incident';
-import { formatDateTime, formatRelativeTime } from '../utils/format';
+import { formatDateForFileName, formatDateTime, formatRelativeTime } from '../utils/format';
 
 function SortHeader({
   label,
@@ -158,15 +158,69 @@ export function IncidentsPage() {
   const emptyFiltered = hasActiveFilters(filters);
   const incidents = incidentsQuery.data?.data ?? [];
 
+  const exportCsv = () => {
+    if (incidents.length === 0) {
+      toast.info('There are no incidents to export');
+      return;
+    }
+
+    const escapeCsvValue = (value: string) => `"${value.replace(/"/g, '""')}"`;
+    const headers = [
+      'id',
+      'title',
+      'description',
+      'severity',
+      'status',
+      'date',
+      'created_at',
+      'updated_at',
+    ];
+
+    const rows = incidents.map((incident) =>
+      [
+        incident.id,
+        incident.title,
+        incident.description,
+        incident.severity,
+        incident.status,
+        incident.date,
+        incident.created_at,
+        incident.updated_at,
+      ]
+        .map((value) => escapeCsvValue(String(value)))
+        .join(','),
+    );
+
+    const csvContent = [headers.join(','), ...rows].join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+
+    link.href = url;
+    link.download = `incidents-${formatDateForFileName(new Date())}.csv`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+
+    toast.success('CSV exported');
+  };
+
   return (
     <PageWrapper
       title="Incidents"
       subtitle="Search, triage, and maintain your incident log."
       actions={
-        <Button onClick={openCreate}>
-          <Plus className="h-4 w-4" />
-          New Incident
-        </Button>
+        <>
+          <Button variant="secondary" onClick={exportCsv}>
+            <Download className="h-4 w-4" />
+            Export CSV
+          </Button>
+          <Button onClick={openCreate}>
+            <Plus className="h-4 w-4" />
+            New Incident
+          </Button>
+        </>
       }
     >
       <FilterBar

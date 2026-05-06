@@ -66,3 +66,13 @@ export function toDatetimeLocal(value: string): string {
 export function datetimeLocalToIso(value: string): string {
   return new Date(value).toISOString();
 }
+
+export function formatDateForFileName(value: Date): string {
+  const year = value.getFullYear();
+  const month = String(value.getMonth() + 1).padStart(2, '0');
+  const day = String(value.getDate()).padStart(2, '0');
+  const hours = String(value.getHours()).padStart(2, '0');
+  const minutes = String(value.getMinutes()).padStart(2, '0');
+
+  return `${year}-${month}-${day}-${hours}${minutes}`;
+}
