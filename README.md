@@ -30,12 +30,12 @@ Install these before starting:
 
 # If you have Docker Desktop running in your system:
 - Just follow below steps only
-    - Run `docker compose up --build` from \Secureyes root dir
+    - Run `docker compose up --build` from root dir
     - Wait for the containers to finish starting, then 
         - Open: Frontend: http://localhost:5173
                 Backend : http://localhost:8000/health
 
-- No local setup required if all is good and working
+- No local setup required if all is good and workin
 
 # Local Setup Overview
 
