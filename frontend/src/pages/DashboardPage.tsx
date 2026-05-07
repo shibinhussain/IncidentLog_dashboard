@@ -2,7 +2,6 @@ import { AlertTriangle, CheckCircle2, CircleAlert, ListChecks } from 'lucide-rea
 import type { ReactNode } from 'react';
 import { IncidentsOverTimeChart } from '../components/charts/IncidentsOverTimeChart';
 import { SeverityChart } from '../components/charts/SeverityChart';
-import { StatusBreakdownChart } from '../components/charts/StatusBreakdownChart';
 import { PageWrapper } from '../components/layout/PageWrapper';
 import { SkeletonLoader } from '../components/ui/SkeletonLoader';
 import { useStats } from '../hooks/useStats';
@@ -98,12 +97,6 @@ export function DashboardPage() {
         </ChartPanel>
         <ChartPanel title="Incidents Over Time">
           {isLoading || !stats ? <SkeletonLoader height={288} /> : <IncidentsOverTimeChart data={stats.by_date} />}
-        </ChartPanel>
-      </div>
-
-      <div className="mt-6">
-        <ChartPanel title="Status Breakdown">
-          {isLoading || !stats ? <SkeletonLoader height={288} /> : <StatusBreakdownChart data={stats.by_status} />}
         </ChartPanel>
       </div>
     </PageWrapper>
