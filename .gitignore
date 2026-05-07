@@ -20,8 +20,6 @@ venv/
 env/
 .env
 .env.example
-incident-dashboard-bonus-steps.md
-incident-dashboard-project-plan.md
 
 # Backend local env and build artifacts
 backend/.env
