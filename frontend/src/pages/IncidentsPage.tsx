@@ -209,7 +209,7 @@ export function IncidentsPage() {
   return (
     <PageWrapper
       title="Incidents"
-      subtitle="Search, triage, and maintain your incident log."
+      subtitle="Search, filter and manage incidents."
       actions={
         <>
           <Button variant="secondary" onClick={exportCsv}>

@@ -51,7 +51,7 @@ export function DashboardPage() {
 
   if (error) {
     return (
-      <PageWrapper title="Dashboard" subtitle="Monitor incident volume and response posture.">
+      <PageWrapper title="Dashboard" subtitle="Track incident trends and totals.">
         <div className="rounded-lg border border-red-100 bg-red-50 p-5 text-sm text-red-700">
           Failed to load dashboard stats.
         </div>
@@ -60,7 +60,7 @@ export function DashboardPage() {
   }
 
   return (
-    <PageWrapper title="Dashboard" subtitle="Monitor incident volume and response posture.">
+    <PageWrapper title="Dashboard" subtitle="Track incident trends and totals.">
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {cards.map((card) => {
           const Icon = card.icon;
