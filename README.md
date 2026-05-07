@@ -1,4 +1,4 @@
-# Incident Log Dashboard
+# Intro - Incident Log Dashboard
 
 Incident Log Dashboard is a full stack app for logging, browsing, filtering, and analyzing operational incidents such as outages, security events, and bug reports. The repo contains a React + TypeScript frontend and a FastAPI + PostgreSQL backend.
 
@@ -15,9 +15,10 @@ Incident Log Dashboard is a full stack app for logging, browsing, filtering, and
 ## Repository Structure
 
 Secureyes/
-├── frontend/   React + TypeScript app
-├── backend/    FastAPI app, database models, migrations
-└── README.md   Full project setup guide
+├── frontend/           React + TypeScript app
+├── backend/            FastAPI app, database models, migrations
+├── docker-compose.yml  Run full app in one command (pre: docker)
+└── README.md           Full project setup guide
 
 ## Prerequisites
 
@@ -25,8 +26,18 @@ Install these before starting:
 - Node.js 20 or newer
 - Python 3.11 or newer
 - PostgreSQL 14 or newer
+- Docker?
 
-## Local Setup Overview
+# If you have Docker Desktop running in your system:
+- Just follow below steps only
+    - Run `docker compose up --build` from \Secureyes root dir
+    - Wait for the containers to finish starting, then 
+        - Open: Frontend: http://localhost:5173
+                Backend : http://localhost:8000/health
+
+- No local setup required if all is good and working
+
+# Local Setup Overview
 
 Run the backend first, then run the frontend.
 - Backend API: `http://localhost:8000`
