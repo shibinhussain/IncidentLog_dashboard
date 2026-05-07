@@ -17,8 +17,10 @@ interface ErrorPayload {
   detail?: unknown;
 }
 
+const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '/api/v1';
+
 export const apiClient = axios.create({
-  baseURL: '/api/v1',
+  baseURL: apiBaseUrl,
   timeout: 10_000,
 });
 
