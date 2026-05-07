@@ -1,6 +1,9 @@
 # Intro - Incident Log Dashboard
 
 Incident Log Dashboard is a full stack app for logging, browsing, filtering, and analyzing operational incidents such as outages, security events, and bug reports. The repo contains a React + TypeScript frontend and a FastAPI + PostgreSQL backend.
+`Live`
+FE: https://incidentlog-dashboard-tfq5.onrender.com/
+BE: https://incidentlog-dashboard.onrender.com/docs
 
 ## Tech Stack
 
